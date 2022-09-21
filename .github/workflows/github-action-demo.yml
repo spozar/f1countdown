@@ -1,9 +1,5 @@
-
-
 name: Build and Deploy
 on: [push]
-env:
-  CI:""
 permissions:
   contents: write
 jobs:
