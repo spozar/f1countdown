@@ -15,7 +15,7 @@ function NextRace() {
     let convert = require("xml-js");
     console.log(lookup.byCountry("Sweden"));
     axios
-      .get("http://ergast.com/api/f1/current")
+      .get("https://ergast.com/api/f1/current")
       .then((res) => {
         return res.data;
       })

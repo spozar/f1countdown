@@ -8,7 +8,7 @@ function Standings() {
   const [currentStandings, setCurrentStandings] = useState();
   useEffect(() => {
     axios
-      .get("http://ergast.com/api/f1/current/driverStandings.json")
+      .get("https://ergast.com/api/f1/current/driverStandings.json")
       .then((res) => {
         console.log(
           res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings
