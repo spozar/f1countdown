@@ -96,7 +96,7 @@ function NextRace() {
                 <Countdown
                   countdownTimestampMS={new Date(
                     parsedRaceList[0].FirstPractice?.Date._text +
-                      " " +
+                      "T" +
                       parsedRaceList[0].FirstPractice?.Time._text
                   ).getTime()}
                 />
@@ -106,7 +106,7 @@ function NextRace() {
                 <Countdown
                   countdownTimestampMS={new Date(
                     parsedRaceList[0].SecondPractice?.Date._text +
-                      " " +
+                      "T" +
                       parsedRaceList[0].SecondPractice?.Time._text
                   ).getTime()}
                 />
@@ -123,7 +123,7 @@ function NextRace() {
                   <Countdown
                     countdownTimestampMS={new Date(
                       parsedRaceList[0].ThirdPractice?.Date._text +
-                        " " +
+                        "T" +
                         parsedRaceList[0].ThirdPractice?.Time._text
                     ).getTime()}
                   />
@@ -131,7 +131,7 @@ function NextRace() {
                   <Countdown
                     countdownTimestampMS={new Date(
                       parsedRaceList[0].Sprint?.Date._text +
-                        " " +
+                        "T" +
                         parsedRaceList[0].Sprint?.Time._text
                     ).getTime()}
                   />
