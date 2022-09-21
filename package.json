@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.4",
-    "@mantine/carousel": "^5.3.1",
     "@mantine/core": "^5.3.0",
     "@mantine/dates": "^5.3.0",
     "@mantine/form": "^5.3.0",
