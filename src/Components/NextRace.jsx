@@ -65,8 +65,10 @@ function NextRace() {
   if (parsedRaceList) {
     return (
 
-          <div style={{textAlign:"center"}}>
+          <div style={{textAlign:"center", border:"black 2px solid"}}>
+            <div style={{border:"black 2px solid"}}>
             <Image src={parsedRaceList[0].CountryflagURL} style={{maxWidth:"320px", height:"213px"}}></Image>
+            </div>
             <Text color="red" weight={800} size="xl">
               {parsedRaceList[0].RaceName._text} <br></br>{" "}
               {parsedRaceList[0].Date._text}
@@ -78,7 +80,7 @@ function NextRace() {
             <Countdown
               countdownTimestampMS={new Date(
                 parsedRaceList[0].Date._text +
-                  " " +
+                  "T" +
                   parsedRaceList[0].Time._text
               ).getTime()}
             />
