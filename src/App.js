@@ -10,12 +10,13 @@ function App() {
           style={{
             display: "inline-block",
             verticalAlign: "top",
-            margin: "1vw",
+            margin: "2vw",
+            marginTop:"5vw"
           }}
         >
           <NextRace />
         </div>
-        <div style={{display: "inline-block" }}>
+        <div style={{display: "inline-block", paddingTop:"4vw" }}>
           <Standings />
         </div>
       </div>

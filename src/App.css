@@ -4,9 +4,15 @@
 }
 
 body{
-  background-color: black;
+  background-color: rgb(29, 29, 29);
   margin: 0;
   padding: 0;
+}
+
+@media (max-width: 800px){
+  body{
+    background-color: black;
+  }
 }
 
 .App-logo {
