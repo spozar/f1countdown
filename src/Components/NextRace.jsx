@@ -13,7 +13,7 @@ function NextRace() {
 
   useEffect(() => {
     let convert = require("xml-js");
-    console.log(lookup.byCountry("Sweden"));
+    //console.log(lookup.byCountry("Sweden"));
     axios
       .get("https://ergast.com/api/f1/current")
       .then((res) => {
@@ -30,7 +30,7 @@ function NextRace() {
   useEffect(() => {
     const date = new Date("12:00:00Z");
     const milliseconds = date.getTime();
-    console.log(milliseconds);
+    //console.log(milliseconds);
 
     if (raceList) {
       let currentDate = new Date().toISOString().split("T")[0];
@@ -39,7 +39,7 @@ function NextRace() {
           element.Countryflag = lookup.byCountry(
             element.Circuit.Location.Country._text
           );
-          console.log(element.Countryflag?.iso2);
+          //console.log(element.Countryflag?.iso2);
           if (
             element.Circuit.Location.Country._text.length < 4 &&
             element.Circuit.Location.Country._text !== "UAE"
@@ -57,14 +57,14 @@ function NextRace() {
         }
       });
 
-      console.log(remainingRaceList);
+      //console.log(remainingRaceList);
       setParsedRaceList(remainingRaceList);
     }
   }, [raceList, lookup]);
 
   if (parsedRaceList) {
     return (
-
+<Card shadow="md" radius="lg" style={{backgroundColor:"#171717"}}>
           <div style={{display:"inline-block",textAlign:"center",width:"300px" ,margin:"0 auto"}}>
             <div style={{margin:"0 auto"}}>
             <Image src={parsedRaceList[0].CountryflagURL} style={{}} radius="lg"></Image>
@@ -141,6 +141,7 @@ function NextRace() {
               </Text>
             </Spoiler>
           </div>
+          </Card>
     );
   } else {
     return <>DOG</>;

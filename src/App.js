@@ -1,10 +1,13 @@
 import "./App.css";
 import NextRace from "./Components/NextRace";
 import Standings from "./Components/Standings";
+import {MantineProvider} from '@mantine/core';
+
+import Constructors from "./Components/Constructors";
 
 function App() {
   return (
-    <>
+    <MantineProvider theme={{ colorScheme: 'dark' }}>
       <div style={{ textAlign: "center", margin: "0 auto"}}>
         <div
           style={{
@@ -16,11 +19,11 @@ function App() {
         >
           <NextRace />
         </div>
-        <div style={{display: "inline-block", paddingTop:"4vw" }}>
+        <div style={{display: "inline-block", paddingTop:"5vw" }}>
           <Standings />
         </div>
       </div>
-    </>
+    </MantineProvider>
   );
 }
 
