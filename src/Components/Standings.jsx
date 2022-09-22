@@ -51,7 +51,7 @@ function Standings() {
 
   useEffect(() => {
     axios
-      .get("http://ergast.com/api/f1/current/constructorStandings.json")
+      .get("https://ergast.com/api/f1/current/constructorStandings.json")
       .then((res) =>{
         //console.log(res.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings);
         setCurrentConstructorStandings(
