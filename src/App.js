@@ -11,7 +11,6 @@ function App() {
             display: "inline-block",
             verticalAlign: "top",
             margin: "1vw",
-            border:"blue 2px solid"
           }}
         >
           <NextRace />
