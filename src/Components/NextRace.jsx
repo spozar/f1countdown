@@ -66,7 +66,7 @@ function NextRace() {
     return (
 
           <div style={{display:"inline-block",textAlign:"center",width:"300px" ,margin:"0 auto"}}>
-            <div style={{border:"black 2px solid", margin:"0 auto"}}>
+            <div style={{margin:"0 auto"}}>
             <Image src={parsedRaceList[0].CountryflagURL} style={{}} radius="lg"></Image>
             </div>
             <Text color="red" weight={800} size="xl">
