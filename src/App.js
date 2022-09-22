@@ -5,12 +5,13 @@ import Standings from "./Components/Standings";
 function App() {
   return (
     <>
-      <div style={{ textAlign: "center" }}>
+      <div style={{ textAlign: "center", margin: "0 auto"}}>
         <div
           style={{
             display: "inline-block",
             verticalAlign: "top",
-            marginRight: "3vw",
+            margin: "1vw",
+            border:"blue 2px solid"
           }}
         >
           <NextRace />

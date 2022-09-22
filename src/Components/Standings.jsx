@@ -25,7 +25,7 @@ function Standings() {
 
   if (currentStandings) {
     return (
-      <div style={{overflow:"hidden", textAlign:"left"}}>
+      <div style={{textAlign:"left", width:"max(300px, 15vw)"}}>
         {currentStandings.map((element, index) => {
           return (
             <div>
@@ -33,7 +33,6 @@ function Standings() {
                 style={{
                   position: "absolute",
                   zIndex: "20",
-                  width: "300px",
                   whiteSpace: "nowrap",
                 }}
               >
@@ -54,9 +53,8 @@ function Standings() {
               </div>
               <div
                 style={{
-                  position: "absolute",
                   zIndex: "20",
-                  marginLeft: Number(currentStandings[0].points) - 20 + "px",
+                  textAlign:"right",
                   paddingLeft: "0px",
                 }}
               >
@@ -67,26 +65,17 @@ function Standings() {
 
               <motion.div
                 key={index}
-                style={{ position: "relative" }}
-                initial={{ translateX: -currentStandings[0].points + "px" }}
-                animate={{ translateX: "0px" }}
+                style={{ position: "relative",backgroundColor: "red",
+                height: "5px",
+                paddingRight: "10px",
+                borderRight: "black solid 0.5px",
+                borderTop: "black solid 0.5px",
+                borderBottom: "black solid 0.5px" }}
+                initial={{ width:"0px" }}
+                animate={{ width: ((Number(element.points) / Number(currentStandings[0].points)) * 100) + "%" }}
                 transition={{ duration: 1 }}
               >
-                <div style={{ height: "25px", position: "relative" }}></div>
-                <div
-                  className="standings_bar"
-                  style={{
-                    textAlign: "right",
-                    position: "relative",
-                    backgroundColor: "red",
-                    width: element.points + "px",
-                    height: "5px",
-                    paddingRight: "10px",
-                    borderRight: "black solid 0.5px",
-                    borderTop: "black solid 0.5px",
-                    borderBottom: "black solid 0.5px",
-                  }}
-                ></div>
+                
               </motion.div>
             </div>
           );

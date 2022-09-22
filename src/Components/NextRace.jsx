@@ -65,9 +65,9 @@ function NextRace() {
   if (parsedRaceList) {
     return (
 
-          <div style={{textAlign:"center", border:"black 2px solid"}}>
-            <div style={{border:"black 2px solid"}}>
-            <Image src={parsedRaceList[0].CountryflagURL} style={{maxWidth:"320px", height:"213px"}}></Image>
+          <div style={{display:"inline-block",textAlign:"center",width:"300px" ,margin:"0 auto"}}>
+            <div style={{border:"black 2px solid", margin:"0 auto"}}>
+            <Image src={parsedRaceList[0].CountryflagURL} style={{}}></Image>
             </div>
             <Text color="red" weight={800} size="xl">
               {parsedRaceList[0].RaceName._text} <br></br>{" "}
