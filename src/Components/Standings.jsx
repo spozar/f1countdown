@@ -1,7 +1,7 @@
 import "../App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Text, Card, SegmentedControl, createStyles } from "@mantine/core";
+import { Text, Card, SegmentedControl, createStyles, Tooltip } from "@mantine/core";
 import { motion } from "framer-motion";
 import Constructors from "./Constructors";
 
@@ -64,9 +64,9 @@ function Standings() {
     axios
       .get("https://ergast.com/api/f1/current/driverStandings.json")
       .then((res) => {
-       //console.log(
-       //   res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings
-       // );
+       console.log(
+         res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings
+       );
         setCurrentStandings(
           res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings
         );
@@ -95,6 +95,7 @@ function Standings() {
       <div style={{textAlign:"left", width:"max(300px, 15vw)"}}>
         {currentStandings.map((element, index) => {
           return (
+            <Tooltip.Floating label={element.Constructors[0].name} offset={-30}>
             <div key={index}>
               <div
                 style={{
@@ -129,7 +130,7 @@ function Standings() {
                   {element.points}
                 </Text>
               </div>
-
+              
               <motion.div
                 key={index}
                 style={{ position: "relative",backgroundColor: teamColors[element.Constructors[0].constructorId],
@@ -145,6 +146,7 @@ function Standings() {
                 
               </motion.div>
             </div>
+            </Tooltip.Floating>
           );
         })}
       </div> : <Constructors currentConstructorStandings={currentConstructorStandings}/>}

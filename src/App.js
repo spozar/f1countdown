@@ -8,18 +8,17 @@ import Constructors from "./Components/Constructors";
 function App() {
   return (
     <MantineProvider theme={{ colorScheme: 'dark' }}>
-      <div style={{ textAlign: "center", margin: "0 auto"}}>
+      <div style={{ textAlign: "center", margin: "0 auto", paddingTop:"5vw" }}>
         <div
           style={{
             display: "inline-block",
             verticalAlign: "top",
-            margin: "2vw",
-            marginTop:"5vw"
+            margin: "0 2vw"
           }}
         >
           <NextRace />
         </div>
-        <div style={{display: "inline-block", paddingTop:"5vw" }}>
+        <div style={{display: "inline-block"}}>
           <Standings />
         </div>
       </div>

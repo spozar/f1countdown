@@ -65,8 +65,8 @@ function NextRace() {
   if (parsedRaceList) {
     return (
 <Card shadow="md" radius="lg" style={{backgroundColor:"#171717"}}>
-          <div style={{display:"inline-block",textAlign:"center",width:"300px" ,margin:"0 auto"}}>
-            <div style={{margin:"0 auto"}}>
+          <div style={{display:"inline-block",textAlign:"center",width:"300px"}}>
+            <div style={{}}>
             <Image src={parsedRaceList[0].CountryflagURL} style={{}} radius="lg"></Image>
             </div>
             <Text color="red" weight={800} size="xl">
