@@ -13,7 +13,8 @@ function App() {
           style={{
             display: "inline-block",
             verticalAlign: "top",
-            margin: "0 2vw"
+            margin: "0 2vw",
+            marginBottom: "5vw"
           }}
         >
           <NextRace />
