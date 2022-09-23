@@ -2,7 +2,7 @@
 import "../App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Text, Card, SegmentedControl, createStyles } from "@mantine/core";
+import { Text, Card, SegmentedControl, createStyles, Popover } from "@mantine/core";
 import { motion } from "framer-motion";
 
 
@@ -26,11 +26,13 @@ function Constructors({currentConstructorStandings}) {
 
   if (currentConstructorStandings) {
     return (<>
+
   
       <div style={{textAlign:"left", width:"max(300px, 15vw)"}}>
         {currentConstructorStandings.map((element, index) => {
-          return (
+          return (                        
             <div key={index}>
+
               <div
                 style={{
                   position: "absolute",
@@ -78,9 +80,11 @@ function Constructors({currentConstructorStandings}) {
                 
               </motion.div>
             </div>
+
           );
         })}
       </div>
+
     
     
     </>);

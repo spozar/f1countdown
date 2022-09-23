@@ -1,7 +1,7 @@
 import "../App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Text, Card, SegmentedControl, createStyles, Tooltip } from "@mantine/core";
+import { Text, Card, SegmentedControl, createStyles, Tooltip, Popover } from "@mantine/core";
 import { motion } from "framer-motion";
 import Constructors from "./Constructors";
 
@@ -95,7 +95,8 @@ function Standings() {
       <div style={{textAlign:"left", width:"max(300px, 15vw)"}}>
         {currentStandings.map((element, index) => {
           return (
-            <Tooltip.Floating label={element.Constructors[0].name} offset={-30}>
+            <Popover position="top" withArrow shadow="md" offset={-20}>
+          <Popover.Target>
             <div key={index}>
               <div
                 style={{
@@ -146,7 +147,11 @@ function Standings() {
                 
               </motion.div>
             </div>
-            </Tooltip.Floating>
+            </Popover.Target>
+      <Popover.Dropdown>
+        <Text size="sm">{element.Constructors[0].name}</Text>
+      </Popover.Dropdown>
+    </Popover>
           );
         })}
       </div> : <Constructors currentConstructorStandings={currentConstructorStandings}/>}
