@@ -1,7 +1,7 @@
 import "../App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Text, Card, SegmentedControl, createStyles, Tooltip, Popover } from "@mantine/core";
+import { Text, Card, SegmentedControl, createStyles, Popover } from "@mantine/core";
 import { motion } from "framer-motion";
 import Constructors from "./Constructors";
 
@@ -30,7 +30,9 @@ const useStyles = createStyles((theme) => ({
 
 
 function Standings() {
+  
   const { classes } = useStyles();
+
 
   const teamColors = {
     'red_bull' : '#0600EF',
@@ -92,10 +94,10 @@ function Standings() {
       style={{marginBottom: "20px"}}
     />
     {value === 'Drivers' ? 
-      <div style={{textAlign:"left", width:"max(300px, 15vw)"}}>
+      <div style={{textAlign:"left", width:"max(300px, 20vw)"}}>
         {currentStandings.map((element, index) => {
           return (
-            <Popover position="top" withArrow shadow="md" offset={-20}>
+            <Popover position="top" withArrow shadow="md" offset={-20} key={index}>
           <Popover.Target>
             <div key={index}>
               <div

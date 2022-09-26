@@ -1,8 +1,6 @@
 
 import "../App.css";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { Text, Card, SegmentedControl, createStyles, Popover } from "@mantine/core";
+import { Text } from "@mantine/core";
 import { motion } from "framer-motion";
 
 
@@ -28,7 +26,7 @@ function Constructors({currentConstructorStandings}) {
     return (<>
 
   
-      <div style={{textAlign:"left", width:"max(300px, 15vw)"}}>
+      <div style={{textAlign:"left", width:"max(300px, 20vw)"}}>
         {currentConstructorStandings.map((element, index) => {
           return (                        
             <div key={index}>

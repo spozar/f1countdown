@@ -1,7 +1,7 @@
 
 import {React, useState, useEffect} from 'react';
 import { getRemainingTImeUntilMsTimestamp } from './CountdownTimerUtils';
-import { Card, Button, Text, Image} from '@mantine/core';
+
 
 const defaultRemainingTime = {
     seconds: '00',
@@ -28,21 +28,24 @@ function Countdown({countdownTimestampMS}){
     return (
 
         <>
-        <div style={{display: "inline-block", textAlign:"center", marginRight:"20px"}}>
-            <div style={{fontSize:"3.5em", fontFamily:"monospace"}}>{remainingTime.days}</div>
-            <div style={{fontSize:"0.7em", marginTop:"-10px"}}>days</div>
+        
+        <div style={{display: "inline-block", textAlign:"center", marginRight:"20px", marginBottom:"20px"}}>
+            <div style={{fontSize:"max(2.5em, 3.5em)", fontFamily:"monospace"}}>{remainingTime.days}</div>
+            <div style={{fontSize:"max(0.7em, 1em)", marginTop:"-15px"}}>days</div>
         </div>
         <div style={{display: "inline-block", textAlign:"center", marginRight:"20px"}}>
-            <div style={{fontSize:"3.5em", fontFamily:"monospace"}}>{remainingTime.hours}</div>
-            <div style={{fontSize:"0.7em", marginTop:"-10px"}}>hours</div>
+        <div style={{fontSize:"max(2.5em, 3.5em)", fontFamily:"monospace"}}>{remainingTime.hours}</div>
+            <div style={{fontSize:"max(0.7em, 1em)", marginTop:"-15px"}}>hours</div>
         </div>
         <div style={{display: "inline-block", textAlign:"center", marginRight:"20px"}}>
-            <div style={{fontSize:"3.5em", fontFamily:"monospace"}}>{remainingTime.minutes}</div>
-            <div style={{fontSize:"0.7em", marginTop:"-10px"}}>minutes</div>
+        <div style={{fontSize:"max(2.5em, 3.5em)", fontFamily:"monospace"}}>{remainingTime.minutes}</div>
+            <div style={{fontSize:"max(0.7em, 1em)", marginTop:"-15px"}}>minutes</div>
         </div>
-        <div style={{display: "inline-block", textAlign:"center"}}>
-            <div style={{fontSize:"3.5em", fontFamily:"monospace"}}>{remainingTime.seconds}</div>
-            <div style={{fontSize:"0.7em", marginTop:"-10px"}}>seconds</div>
+        <div style={{display: "inline-block", textAlign:"center", zIndex:"2000"}}>
+        
+        <div style={{fontSize:"max(2.5em, 3.5em)", fontFamily:"monospace"}}>{remainingTime.seconds}</div>
+            <div style={{fontSize:"max(0.7em, 1em)", marginTop:"-15px"}}>seconds</div>
+            
         </div>
 
 
