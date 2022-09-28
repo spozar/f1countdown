@@ -2,6 +2,10 @@ import "./App.css";
 import NextRace from "./Components/NextRace";
 import Standings from "./Components/Standings";
 import {MantineProvider} from '@mantine/core';
+import styled from 'styled-components';
+import BuyMeACoffee from "./Components/BuyMeACoffee";
+
+
 
 function App() {
   return (
@@ -21,6 +25,7 @@ function App() {
           <Standings />
         </div>
       </div>
+<BuyMeACoffee/>
     </MantineProvider>
   );
 }
