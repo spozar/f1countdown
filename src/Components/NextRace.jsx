@@ -11,8 +11,6 @@ import {
   createStyles,
 } from "@mantine/core";
 
-
-
 const useStyles = createStyles((theme) => ({
   root: {
     backgroundColor:
@@ -37,9 +35,6 @@ const useStyles = createStyles((theme) => ({
 }));
 
 function NextRace() {
-
-
-
   const { classes } = useStyles();
   const [raceList, setRaceList] = useState();
   const [parsedRaceList, setParsedRaceList] = useState();
@@ -48,23 +43,22 @@ function NextRace() {
   const lookup = require("country-code-lookup");
 
   const event = {
-    'FP1' : 'FirstPractice',
-    'FP2' : 'SecondPractice',
-    'FP3' : 'ThirdPractice',
-    'QUAL' : 'Qualifying',
-    'SPRINT' : 'Sprint',
-    'GP' : ''
-  }
+    FP1: "FirstPractice",
+    FP2: "SecondPractice",
+    FP3: "ThirdPractice",
+    QUAL: "Qualifying",
+    SPRINT: "Sprint",
+    GP: "",
+  };
 
   const eventText = {
-    'FP1' : 'First Practice',
-    'FP2' : 'Second Practice',
-    'FP3' : 'Third Practice',
-    'QUAL' : 'Qualifying',
-    'SPRINT' : 'Sprint',
-    'GP' : ''
-  }
-
+    FP1: "First Practice",
+    FP2: "Second Practice",
+    FP3: "Third Practice",
+    QUAL: "Qualifying",
+    SPRINT: "Sprint",
+    GP: "Grand Prix Race",
+  };
 
   useEffect(() => {
     axios
@@ -147,26 +141,42 @@ function NextRace() {
             gradient={{ from: "orange", to: "red", deg: 45 }}
             weight={800}
             size="xl"
+            style={{marginTop:"-10px", marginBottom:"10px"}}
           >
             {parsedRaceList[0].raceName}
-            <Text>{parsedRaceList[0].date}</Text>
+            <Text>{new Date(parsedRaceList[0].date + 'T' + parsedRaceList[0].time).toLocaleString()}</Text>
           </Text>
-          {value === 'GP' ?           <Text color="white" size="sm" weight={900}>
-            <Countdown
-              countdownTimestampMS={new Date(
-                parsedRaceList[0].date + "T" + parsedRaceList[0].time
-              ).getTime()}
-            />
-          </Text> : <>   <Text size="xl" weight={700}>{eventText[value]}</Text>     <Text key={value} color="white" size="sm" weight={800}>
-            
-            <Countdown
-              countdownTimestampMS={new Date(
-                parsedRaceList[0][event[value]].date + "T" + parsedRaceList[0][event[value]].time
-              ).getTime()}
-            />
-          </Text>
-          </>}
-          <Spoiler
+          {value === "GP" ? (<>
+            {" "}
+              <Text size="xl" weight={700} color="white">
+                {eventText[value]}
+              </Text>{" "}
+            <Text color="white" size="sm" weight={900}>
+              <Countdown
+                countdownTimestampMS={new Date(
+                  parsedRaceList[0].date + "T" + parsedRaceList[0].time
+                ).getTime()}
+              />
+            </Text>
+            </>
+          ) : (
+            <>
+              {" "}
+              <Text size="xl" weight={700} color="white">
+                {eventText[value]}
+              </Text>{" "}
+              <Text key={value} color="white" size="sm" weight={800}>
+                <Countdown
+                  countdownTimestampMS={new Date(
+                    parsedRaceList[0][event[value]].date +
+                      "T" +
+                      parsedRaceList[0][event[value]].time
+                  ).getTime()}
+                />
+              </Text>
+            </>
+          )}
+          {/* <Spoiler
             maxHeight={0}
             showLabel="Show more"
             hideLabel="Hide"
@@ -236,7 +246,7 @@ function NextRace() {
                 />
               )}
             </Text>
-          </Spoiler>
+          </Spoiler> */}
         </div>
       </Card>
     );
