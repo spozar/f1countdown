@@ -127,10 +127,10 @@ function NextRace() {
             radius="xl"
             size="md"
             data={[
-              "QUAL",
               "FP1",
               "FP2",
               parsedRaceList[0].ThirdPractice ? "FP3" : "SPRINT",
+              "QUAL",
               "GP",
             ]}
             classNames={classes}
