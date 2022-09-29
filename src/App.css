@@ -7,6 +7,11 @@ body{
   background-color: rgb(29, 29, 29);
   margin: 0;
   padding: 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 
 @media (max-width: 800px){
