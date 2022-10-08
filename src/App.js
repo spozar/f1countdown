@@ -1,7 +1,7 @@
 import "./App.css";
 import NextRace from "./Components/NextRace";
 import Standings from "./Components/Standings";
-import {MantineProvider, Modal, Button} from '@mantine/core';
+import {MantineProvider, Modal, Button, Popover, Text} from '@mantine/core';
 import BuyMeACoffee from "./Components/BuyMeACoffee";
 import BuyMeCoffee from "./Components/BuyMeCoffee";
 import {useState} from 'react';
@@ -13,7 +13,7 @@ function App() {
   const [opened, setOpened] = useState(false);
   return (
     <MantineProvider theme={{ colorScheme: 'dark' }}>
-      <div style={{ textAlign: "center", margin: "0 auto", paddingTop:"5vw" }}>
+      <div style={{position: "relative", textAlign: "center", margin: "0 auto", paddingTop:"5vw" }}>
         <div
           style={{
             display: "inline-block",
@@ -27,16 +27,10 @@ function App() {
         <div style={{display: "inline-block", marginBottom:"100px"}}>
           <Standings />
         </div>
+        <div style={{zIndex:"200000"}}><BuyMeCoffee/></div>
       </div>
-      <Modal
-        opened={opened}
-        onClose={() => setOpened(false)}
-        title="Introduce yourself!"
-      >
-        <BuyMeCoffee/>
-      </Modal>
-      {/* <Button onClick={() => setOpened(true)}>Open Modal</Button> */}
-    <BuyMeACoffee/>
+
+  
     </MantineProvider>
   );
 }
