@@ -16,22 +16,22 @@ export function getRemainingTImeUntilMsTimestamp(timestampMs) {
 
 function getRemainingSeconds(nowDayjs, timestampDayjs){
     const seconds = timestampDayjs.diff(nowDayjs, 'seconds') % 60;
-    return padWithZeros(seconds, 2);
+    return seconds > 0 ? padWithZeros(seconds, 2) : "00";
 
 }
 function getRemainingMinutes(nowDayjs, timestampDayjs){
     const minutes = timestampDayjs.diff(nowDayjs, 'minutes') % 60;
-    return padWithZeros(minutes, 2);
+    return minutes > 0 ? padWithZeros(minutes, 2) : "00";
 
 }
 function getRemainingHours(nowDayjs, timestampDayjs){
     const hours = timestampDayjs.diff(nowDayjs, 'hours') % 24;
-    return padWithZeros(hours, 2);
+    return hours > 0 ? padWithZeros(hours, 2) : "00";
 
 }
 function getRemainingDays(nowDayjs, timestampDayjs){
     const days = timestampDayjs.diff(nowDayjs, 'days');
-    return days;
+    return padWithZeros(days, 2);
 
 }
 

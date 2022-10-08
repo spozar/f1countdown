@@ -10,6 +10,7 @@ import {
   SegmentedControl,
   createStyles,
 } from "@mantine/core";
+import Weather from "./Weather";
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -74,9 +75,9 @@ function NextRace() {
   useEffect(() => {
     let remainingRaceList = [];
     if (raceList) {
-      let currentDate = new Date().toISOString().split("T")[0];
+      let currentDate = new Date().toISOString();
       raceList.forEach((element) => {
-        if (element.date > currentDate) {
+        if (element.date + 'T'+element.time > currentDate) {
           element.Countryflag = lookup.byCountry(
             element.Circuit.Location.country
           );
@@ -136,6 +137,7 @@ function NextRace() {
             classNames={classes}
             style={{ marginBottom: "20px" }}
           />
+          <div style={{display: "inline-block", textAlign:"left"}}>
           <Text
             variant="gradient"
             gradient={{ from: "orange", to: "red", deg: 45 }}
@@ -146,6 +148,10 @@ function NextRace() {
             {parsedRaceList[0].raceName}
             <Text>{new Date(parsedRaceList[0].date + 'T' + parsedRaceList[0].time).toLocaleString()}</Text>
           </Text>
+          </div>
+          <div style={{marginBottom:"20px"}}>
+          <Weather date={parsedRaceList[0].date + 'T' + parsedRaceList[0].time} coords={parsedRaceList[0].Circuit.Location}/>
+          </div>
           {value === "GP" ? (<>
             {" "}
               <Text size="xl" weight={700} color="white">
@@ -165,8 +171,8 @@ function NextRace() {
               <Text size="xl" weight={700} color="white">
                 {eventText[value]}
               </Text>{" "}
-              <Text key={value} color="white" size="sm" weight={800}>
-                <Countdown
+              <Text color="white" size="sm" weight={800}>
+                <Countdown key={value}
                   countdownTimestampMS={new Date(
                     parsedRaceList[0][event[value]].date +
                       "T" +
