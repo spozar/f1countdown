@@ -121,6 +121,24 @@ function NextRace() {
               radius="lg"
             ></Image>
           </div>
+          <div style={{borderRadius:"20px",paddingTop:"10px", marginBottom:"50px"}}>
+          
+          <div style={{display: "inline-block", textAlign:"left"}}>
+          <Text
+            variant="gradient"
+            gradient={{ from: "orange", to: "red", deg: 45 }}
+            weight={800}
+            size="xl"
+            style={{marginTop:"-10px", marginBottom:"15px", textAlign:"center", fontSize:"max(1.5vw, 1.5em)", whiteSpace:"nowrap"}}
+          >
+            {parsedRaceList[0].raceName}
+            <Text size="xl">{new Date(parsedRaceList[0].date + 'T' + parsedRaceList[0].time).toLocaleString()}</Text>
+          </Text>
+          </div>
+          <div style={{marginBottom:"20px"}}>
+          <Weather date={parsedRaceList[0].date + 'T' + parsedRaceList[0].time} coords={parsedRaceList[0].Circuit.Location}/>
+          </div>
+          </div>
           <SegmentedControl
             value={value}
             onChange={setValue}
@@ -137,21 +155,6 @@ function NextRace() {
             classNames={classes}
             style={{ marginBottom: "20px" }}
           />
-          <div style={{display: "inline-block", textAlign:"left"}}>
-          <Text
-            variant="gradient"
-            gradient={{ from: "orange", to: "red", deg: 45 }}
-            weight={800}
-            size="xl"
-            style={{marginTop:"-10px", marginBottom:"10px"}}
-          >
-            {parsedRaceList[0].raceName}
-            <Text>{new Date(parsedRaceList[0].date + 'T' + parsedRaceList[0].time).toLocaleString()}</Text>
-          </Text>
-          </div>
-          <div style={{marginBottom:"20px"}}>
-          <Weather date={parsedRaceList[0].date + 'T' + parsedRaceList[0].time} coords={parsedRaceList[0].Circuit.Location}/>
-          </div>
           {value === "GP" ? (<>
             {" "}
               <Text size="xl" weight={700} color="white">
