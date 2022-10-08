@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {useEffect, useState} from 'react';
-import ReactAnimatedWeather from 'react-animated-weather';
 import {Text} from '@mantine/core';
 
 function Weather(props){
@@ -60,7 +59,7 @@ function Weather(props){
             console.log(props.date);
         })
 
-    }, [])
+    }, [props])
 
     useEffect(() => {
         if(weatherApi){
@@ -77,7 +76,7 @@ function Weather(props){
             })
         }
 
-    }, [weatherApi])
+    }, [weatherApi, props])
     
     
     if(parsedWeather){

@@ -31,6 +31,6 @@ export default function BuyMeACoffee() {
       div.appendChild(script);
     }, []);
   
-    return <div id="supportByBMC"></div>;
+    return <div id="supportByBMC" allow="payment"></div>;
   }
   

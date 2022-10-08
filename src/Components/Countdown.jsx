@@ -8,7 +8,7 @@ const defaultRemainingTime = {
     seconds: '--',
     minutes: '--',
     hours: '--',
-    days: '-'
+    days: '--'
 }
 
 

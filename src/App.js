@@ -1,13 +1,16 @@
 import "./App.css";
 import NextRace from "./Components/NextRace";
 import Standings from "./Components/Standings";
-import {MantineProvider} from '@mantine/core';
-import styled from 'styled-components';
+import {MantineProvider, Modal, Button} from '@mantine/core';
 import BuyMeACoffee from "./Components/BuyMeACoffee";
+import BuyMeCoffee from "./Components/BuyMeCoffee";
+import {useState} from 'react';
 
 
 
 function App() {
+
+  const [opened, setOpened] = useState(false);
   return (
     <MantineProvider theme={{ colorScheme: 'dark' }}>
       <div style={{ textAlign: "center", margin: "0 auto", paddingTop:"5vw" }}>
@@ -25,7 +28,15 @@ function App() {
           <Standings />
         </div>
       </div>
-<BuyMeACoffee/>
+      <Modal
+        opened={opened}
+        onClose={() => setOpened(false)}
+        title="Introduce yourself!"
+      >
+        <BuyMeCoffee/>
+      </Modal>
+      {/* <Button onClick={() => setOpened(true)}>Open Modal</Button> */}
+    <BuyMeACoffee/>
     </MantineProvider>
   );
 }

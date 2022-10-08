@@ -31,7 +31,7 @@ function getRemainingHours(nowDayjs, timestampDayjs){
 }
 function getRemainingDays(nowDayjs, timestampDayjs){
     const days = timestampDayjs.diff(nowDayjs, 'days');
-    return padWithZeros(days, 2);
+    return days > 0 ? padWithZeros(days, 2) : "00";
 
 }
 
