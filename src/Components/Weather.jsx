@@ -87,6 +87,8 @@ function Weather(props) {
           >
             {weatherLink[parsedWeather.data.next_1_hours.summary.symbol_code]}{" "}
             &nbsp;&nbsp;
+            <br/>
+            30C
           </Text>
         </div>
         <div>
@@ -109,7 +111,7 @@ function Weather(props) {
       </>
     );
   } else {
-    return <>Weather only available 14 days before race start</>;
+    return <>Weather only available 10 days before race start</>;
   }
 }
 

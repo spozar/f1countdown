@@ -24,7 +24,7 @@ function App() {
         >
           <NextRace/>
         </div>
-        <div style={{display: "inline-block", marginBottom:"100px"}}>
+        <div style={{display: "inline-block"}}>
           <Standings />
         </div>
         <div style={{zIndex:"200000"}}><BuyMeCoffee/></div>
