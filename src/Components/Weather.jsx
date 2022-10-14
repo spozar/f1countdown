@@ -85,22 +85,24 @@ function Weather(props) {
             size="xl"
             style={{}}
           >
-            {weatherLink[parsedWeather.data.next_1_hours.summary.symbol_code]}{" "}
+            {weatherLink[parsedWeather.data?.next_6_hours?.summary?.symbol_code]}{" "}
             &nbsp;&nbsp;
             <br/>
-            30C
+            {parsedWeather.data.instant.details.air_temperature}
+            °C
           </Text>
         </div>
         <div>
-        <img
+          {parsedWeather.data?.next_6_hours?.summary ? <img
             style={{ width: "70px"}}
             src={
               "https://api.met.no/images/weathericons/svg/" +
-              parsedWeather.data.next_1_hours.summary.symbol_code +
+              parsedWeather.data?.next_6_hours?.summary?.symbol_code +
               ".svg"
             }
             alt="Weather"
-          ></img>
+          ></img> : <></>}
+
         </div>
 
         

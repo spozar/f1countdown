@@ -8,7 +8,7 @@ function BuyMeCoffee() {
         <Button color="orange" style={{border:"black 1px solid",boxShadow:"3px 3px black",borderRadius:"2000px", width:"70px", height:"70px",position:"fixed", right:"30px", bottom:"30px" }}><img src="https://cdn.buymeacoffee.com/widget/assets/coffee%20cup.svg" width={30}></img></Button>
         </div>
       </Popover.Target>
-      <Popover.Dropdown style={{padding:"0", backgroundColor:"white", marginRight:"200px"}}>
+      <Popover.Dropdown style={{padding:"0", backgroundColor:"white", marginRight:"200px", position: "fixed"}}>
       <div style={{ borderRadius: "200px"}}>
       <iframe
         title="BuyMeACoffee"
