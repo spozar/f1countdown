@@ -65,9 +65,14 @@ function Weather(props) {
     if (weatherApi) {
       weatherApi.every((element) => {
         if (element.time >= props.date) {
-          setParsedWeather(element);
-          console.log(element);
-          return false;
+          if(element.data.next_6_hours){
+            setParsedWeather(element);
+            console.log(element);
+            return false;
+          }
+          else{
+            return true;
+          }
         } else {
           return true;
         }
@@ -78,6 +83,7 @@ function Weather(props) {
   if (parsedWeather) {
     return (
         <>
+        <Text weight={700} style={{fontFamily:"Raleway", fontSize:"max(1vw,1em"}}>Race weather forecast</Text>
       <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
         <div>
           <Text
@@ -93,7 +99,7 @@ function Weather(props) {
             °C</Text>
           </Text>
         </div>
-        <div>
+        <div style={{marginTop:"10px"}}>
           {parsedWeather.data?.next_6_hours?.summary ? <img
             style={{ width: "70px"}}
             src={

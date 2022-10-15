@@ -121,7 +121,7 @@ function NextRace() {
               radius="lg"
             ></Image>
           </div>
-          <div style={{borderRadius:"20px",paddingTop:"10px", marginBottom:"50px"}}>
+          <div style={{borderRadius:"20px",paddingTop:"10px", marginBottom:"20px"}}>
           
           <div style={{display: "inline-block", textAlign:"left"}}>
           <Text
@@ -135,7 +135,7 @@ function NextRace() {
             <Text size="xl">{new Date(parsedRaceList[0].date + 'T' + parsedRaceList[0].time).toLocaleString()}</Text>
           </Text>
           </div>
-          <div style={{marginBottom:"20px"}}>
+          <div>
           <Weather date={parsedRaceList[0].date + 'T' + parsedRaceList[0].time} coords={parsedRaceList[0].Circuit.Location}/>
           </div>
           </div>
