@@ -33,6 +33,7 @@ function Weather(props) {
     lightssleetshowersandthunder: "Light sleet showers and thunder",
     lightssnowshowersandthunder: "Light snow showers and thunder",
     partlycloudy: "Partly cloudy",
+    partlycloudy_night: "Partly cloudy night",
     rain: "Rain",
     rainandthunder: "Rain and thunder",
     rainshowers: "Rain showers",
@@ -85,11 +86,11 @@ function Weather(props) {
             size="xl"
             style={{}}
           >
-            {weatherLink[parsedWeather.data?.next_6_hours?.summary?.symbol_code]}{" "}
+            {weatherLink[parsedWeather.data?.next_6_hours?.summary?.symbol_code.split('_')[0]]}{" "}
             &nbsp;&nbsp;
             <br/>
-            {parsedWeather.data.instant.details.air_temperature}
-            °C
+            <Text size="md">{parsedWeather.data.instant.details.air_temperature}
+            °C</Text>
           </Text>
         </div>
         <div>
