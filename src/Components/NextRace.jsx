@@ -6,7 +6,6 @@ import {
   Card,
   Text,
   Image,
-  Spoiler,
   SegmentedControl,
   createStyles,
 } from "@mantine/core";
@@ -62,15 +61,24 @@ function NextRace() {
   };
 
   useEffect(() => {
+    const dataAge = localStorage.getItem('Age');
+    if((Date.now() - dataAge) > 21600000){
     axios
       .get("https://ergast.com/api/f1/current.json")
       .then((res) => {
         return res.data;
       })
       .then((resdata) => {
+        localStorage.setItem('NextRace', JSON.stringify(resdata.MRData.RaceTable.Races));
+        localStorage.setItem('Age', Date.now());
         setRaceList(resdata.MRData.RaceTable.Races);
       });
-  }, [lookup]);
+    }
+
+      setRaceList(JSON.parse(localStorage.getItem('NextRace')))
+  }
+
+, [lookup]);
 
   useEffect(() => {
     let remainingRaceList = [];
@@ -81,7 +89,6 @@ function NextRace() {
           element.Countryflag = lookup.byCountry(
             element.Circuit.Location.country
           );
-          //console.log(element.Countryflag?.iso2);
           if (
             element.Circuit.Location.country.length < 4 &&
             element.Circuit.Location.country !== "UAE"
@@ -98,8 +105,6 @@ function NextRace() {
           remainingRaceList.push(element);
         }
       });
-
-      console.log(remainingRaceList);
       setParsedRaceList(remainingRaceList);
     }
   }, [raceList, lookup]);
@@ -117,8 +122,9 @@ function NextRace() {
           <div style={{ marginBottom: "2vh" }}>
             <Image
               src={parsedRaceList[0].CountryflagURL}
-              style={{}}
               radius="lg"
+              withPlaceholder
+              placeholder={<Text align="center">Loading image</Text>}
             ></Image>
           </div>
           <div style={{borderRadius:"20px",paddingTop:"10px", marginBottom:"20px"}}>
@@ -148,8 +154,8 @@ function NextRace() {
             data={[
               "FP1",
               "FP2",
-              parsedRaceList[0].ThirdPractice ? "FP3" : "SPRINT",
-              "QUAL",
+              parsedRaceList[0].ThirdPractice ? "FP3" : "QUAL",
+              parsedRaceList[0].Sprint ? "SPRINT" : "QUAL",
               "GP",
             ]}
             classNames={classes}

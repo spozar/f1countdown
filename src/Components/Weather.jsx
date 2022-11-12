@@ -55,9 +55,7 @@ function Weather(props) {
     axios(
       `https://api.met.no/weatherapi/locationforecast/2.0/?lat=${props.coords.lat}&lon=${props.coords.long}`
     ).then((res) => {
-      console.log(res.data.properties.timeseries);
       setWeatherApi(res.data.properties.timeseries);
-      console.log(props.date);
     });
   }, [props]);
 
@@ -67,7 +65,7 @@ function Weather(props) {
         if (element.time >= props.date) {
           if(element.data.next_6_hours){
             setParsedWeather(element);
-            console.log(element);
+
             return false;
           }
           else{

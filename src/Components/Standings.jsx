@@ -52,27 +52,38 @@ function Standings() {
     useState();
 
   useEffect(() => {
+    const dataAge = localStorage.getItem('Age_Constructor');
+    if((Date.now() - dataAge) > 21600000){
     axios
       .get("https://ergast.com/api/f1/current/constructorStandings.json")
       .then((res) =>{
-        //console.log(res.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings);
+        localStorage.setItem('Age_Constructor', Date.now());
+        localStorage.setItem('constructorStandings', JSON.stringify(res.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings))
         setCurrentConstructorStandings(
           res.data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings
         )
       }
       );
+    }
+    setCurrentConstructorStandings(JSON.parse(localStorage.getItem('constructorStandings')));
   }, []);
   useEffect(() => {
+
+    const dataAge = localStorage.getItem('Age_Driver');
+    if((Date.now() - dataAge) > 21600000){
     axios
       .get("https://ergast.com/api/f1/current/driverStandings.json")
       .then((res) => {
-       console.log(
-         res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings
-       );
+        localStorage.setItem('Age_Driver', Date.now());
+        localStorage.setItem('driverStandings', JSON.stringify(res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings));
         setCurrentStandings(
           res.data.MRData.StandingsTable.StandingsLists[0].DriverStandings
         );
       });
+    }
+    if(JSON.parse(localStorage.getItem('driverStandings')) !== null){
+    setCurrentStandings(JSON.parse(localStorage.getItem('driverStandings')));
+    }
   }, []);
 
   useEffect(() => {
