@@ -1,6 +1,6 @@
 import Countdown from "./Countdown";
 import "../App.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import {
   Card,
@@ -34,11 +34,13 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
+
 function NextRace() {
   const { classes } = useStyles();
   const [raceList, setRaceList] = useState();
   const [parsedRaceList, setParsedRaceList] = useState();
   const [value, setValue] = useState("GP");
+  const [year, setYear] = useState(new Date().getFullYear());
 
   const lookup = require("country-code-lookup");
 
@@ -51,6 +53,7 @@ function NextRace() {
     GP: "",
   };
 
+
   const eventText = {
     FP1: "First Practice",
     FP2: "Second Practice",
@@ -61,6 +64,7 @@ function NextRace() {
   };
 
   useEffect(() => {
+
     const dataAge = localStorage.getItem('Age');
     if((Date.now() - dataAge) > 21600000){
     axios
@@ -81,22 +85,22 @@ function NextRace() {
 , [lookup]);
 
   useEffect(() => {
-    let remainingRaceList = [];
+    let remainingRaceList;
     if (raceList) {
       let currentDate = new Date().toISOString();
       raceList.forEach((element) => {
-        if (element.date + 'T'+element.time > currentDate) {
+        if (element.date + 'T'+element?.time > currentDate) {
           element.Countryflag = lookup.byCountry(
-            element.Circuit.Location.country
+            element?.Circuit.Location.country
           );
           if (
-            element.Circuit.Location.country.length < 4 &&
-            element.Circuit.Location.country !== "UAE"
+            element?.Circuit.Location.country.length < 4 &&
+            element?.Circuit.Location.country !== "UAE"
           ) {
             element.CountryflagURL =
               "https://countryflagsapi.com/png/" +
-              element.Circuit.Location.country;
-          } else if (element.Circuit.Location.country === "UAE") {
+              element?.Circuit.Location.country;
+          } else if (element?.Circuit.Location.country === "UAE") {
             element.CountryflagURL = "https://countryflagsapi.com/png/ARE";
           } else {
             element.CountryflagURL =
@@ -106,8 +110,14 @@ function NextRace() {
         }
       });
       setParsedRaceList(remainingRaceList);
+      console.log(typeof parsedRaceList);
     }
   }, [raceList, lookup]);
+
+
+  if (typeof parsedRaceList === "undefined"){
+    return <div><Text color="white" weight={600} size={20}><Text size={30}>The {year} season has ended!</Text>Website will be back for next season!</Text></div>
+  }
 
   if (parsedRaceList) {
     return (
@@ -121,7 +131,7 @@ function NextRace() {
         >
           <div style={{ marginBottom: "2vh" }}>
             <Image
-              src={parsedRaceList[0].CountryflagURL}
+              src={parsedRaceList[0]?.CountryflagURL}
               radius="lg"
               withPlaceholder
               placeholder={<Text align="center">Loading image</Text>}
@@ -137,12 +147,12 @@ function NextRace() {
             size="xl"
             style={{marginTop:"-10px", marginBottom:"15px", textAlign:"center", fontSize:"max(1.5vw, 1.5em)", whiteSpace:"nowrap"}}
           >
-            {parsedRaceList[0].raceName}
-            <Text size="xl">{new Date(parsedRaceList[0].date + 'T' + parsedRaceList[0].time).toLocaleString()}</Text>
+            {parsedRaceList[0]?.raceName}
+            <Text size="xl">{new Date(parsedRaceList[0]?.date + 'T' + parsedRaceList[0]?.time).toLocaleString()}</Text>
           </Text>
           </div>
           <div>
-          <Weather date={parsedRaceList[0].date + 'T' + parsedRaceList[0].time} coords={parsedRaceList[0].Circuit.Location}/>
+          <Weather date={parsedRaceList[0]?.date + 'T' + parsedRaceList[0]?.time} coords={parsedRaceList[0]?.Circuit.Location}/>
           </div>
           </div>
           <SegmentedControl
@@ -154,8 +164,8 @@ function NextRace() {
             data={[
               "FP1",
               "FP2",
-              parsedRaceList[0].ThirdPractice ? "FP3" : "QUAL",
-              parsedRaceList[0].Sprint ? "SPRINT" : "QUAL",
+              parsedRaceList[0]?.ThirdPractice ? "FP3" : "QUAL",
+              parsedRaceList[0]?.Sprint ? "SPRINT" : "QUAL",
               "GP",
             ]}
             classNames={classes}
@@ -169,7 +179,7 @@ function NextRace() {
             <Text color="white" size="sm" weight={900}>
               <Countdown
                 countdownTimestampMS={new Date(
-                  parsedRaceList[0].date + "T" + parsedRaceList[0].time
+                  parsedRaceList[0]?.date + "T" + parsedRaceList[0]?.time
                 ).getTime()}
               />
             </Text>
@@ -183,9 +193,9 @@ function NextRace() {
               <Text color="white" size="sm" weight={800}>
                 <Countdown key={value}
                   countdownTimestampMS={new Date(
-                    parsedRaceList[0][event[value]].date +
+                    parsedRaceList[0][event[value]]?.date +
                       "T" +
-                      parsedRaceList[0][event[value]].time
+                      parsedRaceList[0][event[value]]?.time
                   ).getTime()}
                 />
               </Text>

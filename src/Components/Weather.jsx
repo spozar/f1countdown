@@ -52,11 +52,13 @@ function Weather(props) {
   const [parsedWeather, setParsedWeather] = useState();
 
   useEffect(() => {
+    if(props.coords){
     axios(
       `https://api.met.no/weatherapi/locationforecast/2.0/?lat=${props.coords.lat}&lon=${props.coords.long}`
     ).then((res) => {
       setWeatherApi(res.data.properties.timeseries);
     });
+  }
   }, [props]);
 
   useEffect(() => {
