@@ -68,9 +68,11 @@ function NextRace() {
     const dataAge = localStorage.getItem('Age');
     if((Date.now() - dataAge) > 21600000){
     axios
-      .get("https://ergast.com/api/f1/current.json")
+      .get("https://ergast.com/api/f1/2023.json")
       .then((res) => {
+        console.log('Hello',res);
         return res.data;
+
       })
       .then((resdata) => {
         localStorage.setItem('NextRace', JSON.stringify(resdata.MRData.RaceTable.Races));
@@ -85,7 +87,7 @@ function NextRace() {
 , [lookup]);
 
   useEffect(() => {
-    let remainingRaceList;
+    let remainingRaceList = [];
     if (raceList) {
       let currentDate = new Date().toISOString();
       raceList.forEach((element) => {

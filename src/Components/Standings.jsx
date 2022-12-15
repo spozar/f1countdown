@@ -216,6 +216,7 @@ function Standings() {
     return (
 
       <Card shadow="md" radius="lg" style={{backgroundColor:"#171717"}}>
+        <Text weight={700} size={'2em'}>Standings for {new Date().getFullYear()}</Text>
               <SegmentedControl
               value={value}
               onChange={setValue}
