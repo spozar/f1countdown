@@ -70,11 +70,10 @@ function NextRace() {
 
 	useEffect(() => {
 		const dataAge = localStorage.getItem('Age');
-		if (Date.now() - dataAge > 0) {
+		if (Date.now() - dataAge > 21600000) {
 			axios
 				.get('https://ergast.com/api/f1/2023.json')
 				.then((res) => {
-					console.log('Hello', res);
 					return res.data;
 				})
 				.then((resdata) => {
@@ -84,7 +83,6 @@ function NextRace() {
 					);
 					localStorage.setItem('Age', Date.now());
 					setRaceList(resdata.MRData.RaceTable.Races);
-					console.log('races', resdata);
 				});
 		}
 
@@ -111,15 +109,12 @@ function NextRace() {
 						element.CountryflagURL =
 							'https://countryflagsapi.com/png/ARE';
 					} else {
-						element.CountryflagURL =
-							'https://countryflagsapi.com/png/' +
-							element?.Countryflag?.iso2;
+						element.CountryflagURL = `/FlagsSVG/${element?.Countryflag?.iso2}.svg`;
 					}
 					remainingRaceList.push(element);
 				}
 			});
 			setParsedRaceList(remainingRaceList);
-			console.log(typeof parsedRaceList);
 		}
 	}, [raceList, lookup]);
 
@@ -154,11 +149,11 @@ function NextRace() {
 				>
 					<div style={{ marginBottom: '2vh' }}>
 						<Image
-							src="https://countryflagsapi.com/png/br"
+							src={parsedRaceList[0]?.CountryflagURL}
 							radius="lg"
 							withPlaceholder
 							placeholder={<Text align="center">Loading image</Text>}
-							crossOrigin="anonymous"
+							imageProps={{ crossOrigin: 'anonymous' }}
 						></Image>
 					</div>
 					<div

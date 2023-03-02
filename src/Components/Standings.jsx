@@ -193,10 +193,6 @@ function Standings() {
 					'https://ergast.com/api/f1/2023/constructorStandings.json'
 				)
 				.then((res) => {
-					console.log(
-						res.data.MRData.StandingsTable.StandingsLists[0]
-							.ConstructorStandings
-					);
 					localStorage.setItem('Age_Constructor', Date.now());
 					localStorage.setItem(
 						'constructorStandings',
@@ -209,8 +205,6 @@ function Standings() {
 						res.data.MRData.StandingsTable.StandingsLists[0]
 							.ConstructorStandings
 					);
-
-					console.log('Constructors', res);
 				});
 		}
 		setCurrentConstructorStandings(
@@ -235,7 +229,6 @@ function Standings() {
 						res.data.MRData.StandingsTable.StandingsLists[0]
 							.DriverStandings
 					);
-					console.log('Drivers', res);
 				});
 		}
 		if (
