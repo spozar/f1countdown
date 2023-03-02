@@ -109,7 +109,7 @@ function NextRace() {
 						element.CountryflagURL =
 							'https://countryflagsapi.com/png/ARE';
 					} else {
-						element.CountryflagURL = `FlagsSVG/${element?.Countryflag?.iso2}.svg`;
+						element.CountryflagURL = `FlagsSVG/${element?.Countryflag?.iso2.toLowerCase()}.svg`;
 					}
 					remainingRaceList.push(element);
 				}
