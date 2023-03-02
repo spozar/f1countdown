@@ -2,7 +2,7 @@
   "name": "f1countdown",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "https://spozar.github.io/f1countdown/",
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@mantine/core": "^5.3.0",
