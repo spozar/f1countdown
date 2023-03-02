@@ -149,7 +149,7 @@ function NextRace() {
 				>
 					<div style={{ marginBottom: '2vh' }}>
 						<Image
-							src={`${parsedRaceList[0]?.CountryflagURL}`}
+							src={`f1countdown/${parsedRaceList[0]?.CountryflagURL}`}
 							radius="lg"
 							withPlaceholder
 							placeholder={<Text align="center">Loading image</Text>}
