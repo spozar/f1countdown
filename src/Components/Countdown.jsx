@@ -29,9 +29,9 @@ function Countdown({ countdownTimestampMS }) {
 	return (
 		<>
 			<motion.div
-				initial={{ translateX: '-200px', opacity: 0 }}
-				animate={{ translateX: '0px', opacity: 1 }}
-				transition={{ duration: 1 }}
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.4 }}
 				style={{
 					display: 'inline-block',
 					textAlign: 'center',
@@ -54,9 +54,9 @@ function Countdown({ countdownTimestampMS }) {
 				</div>
 			</motion.div>
 			<motion.div
-				initial={{ translateX: '-200px', opacity: 0 }}
-				animate={{ translateX: '0px', opacity: 1 }}
-				transition={{ duration: 1 }}
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.4 }}
 				style={{
 					display: 'inline-block',
 					textAlign: 'center',
@@ -78,9 +78,9 @@ function Countdown({ countdownTimestampMS }) {
 				</div>
 			</motion.div>
 			<motion.div
-				initial={{ translateX: '200px', opacity: 0 }}
-				animate={{ translateX: '0px', opacity: 1 }}
-				transition={{ duration: 1 }}
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.4 }}
 				style={{
 					display: 'inline-block',
 					textAlign: 'center',
@@ -102,9 +102,9 @@ function Countdown({ countdownTimestampMS }) {
 				</div>
 			</motion.div>
 			<motion.div
-				initial={{ translateX: '200px', opacity: 0 }}
-				animate={{ translateX: '0px', opacity: 1 }}
-				transition={{ duration: 1 }}
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.4 }}
 				style={{
 					display: 'inline-block',
 					textAlign: 'center',
