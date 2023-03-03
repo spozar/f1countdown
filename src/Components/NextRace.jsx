@@ -141,7 +141,7 @@ function NextRace() {
 				<Card
 					shadow="md"
 					radius="lg"
-					style={{ backgroundColor: '#171717' }}
+					style={{ backgroundColor: '#171717', overflow: 'visible' }}
 				>
 					<div
 						style={{
@@ -296,7 +296,7 @@ function NextRace() {
 								.add(90, 'minutes')
 								.format('HH:mm')}
 							options={['Apple', 'Google']}
-							listStyle="modal"
+							listStyle="dropdown"
 							lightMode="dark"
 							label="Add race to calendar"
 							hideBackground={true}
