@@ -40,7 +40,6 @@ function App() {
 				<div style={{ zIndex: '200000' }}>
 					<BuyMeCoffee />
 				</div>
-				<video src=""></video>
 			</div>
 		</MantineProvider>
 	);

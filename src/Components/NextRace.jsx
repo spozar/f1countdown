@@ -295,12 +295,13 @@ function NextRace() {
 							)
 								.add(90, 'minutes')
 								.format('HH:mm')}
-							options={['Apple', 'Google']}
+							options={['Apple', 'Google', 'MicrosoftTeams']}
 							listStyle="dropdown"
 							lightMode="dark"
 							label="Add race to calendar"
 							hideBackground={true}
 							buttonStyle=""
+							hideBranding={true}
 						/>
 					</div>
 				</Card>
