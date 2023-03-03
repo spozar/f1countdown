@@ -1,6 +1,6 @@
 import Countdown from './Countdown';
 import '../App.css';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import {
 	Card,
@@ -10,6 +10,8 @@ import {
 	createStyles,
 } from '@mantine/core';
 import Weather from './Weather';
+import { AddToCalendarButton } from 'add-to-calendar-button-react';
+import moment from 'moment';
 
 const useStyles = createStyles((theme) => ({
 	root: {
@@ -135,144 +137,174 @@ function NextRace() {
 
 	if (parsedRaceList) {
 		return (
-			<Card
-				shadow="md"
-				radius="lg"
-				style={{ backgroundColor: '#171717' }}
-			>
-				<div
-					style={{
-						display: 'inline-block',
-						textAlign: 'center',
-						width: 'max(300px, 20vw)',
-					}}
+			<>
+				<Card
+					shadow="md"
+					radius="lg"
+					style={{ backgroundColor: '#171717' }}
 				>
-					<div style={{ marginBottom: '2vh' }}>
-						<Image
-							src={`${parsedRaceList[0]?.CountryflagURL}`}
-							radius="lg"
-							withPlaceholder
-							placeholder={<Text align="center">Loading image</Text>}
-							imageProps={{ crossOrigin: 'anonymous' }}
-						></Image>
+					<div
+						style={{
+							display: 'inline-block',
+							textAlign: 'center',
+							width: 'max(300px, 20vw)',
+						}}
+					>
+						<div style={{ marginBottom: '2vh' }}>
+							<Image
+								src={`${parsedRaceList[0]?.CountryflagURL}`}
+								radius="lg"
+								withPlaceholder
+								placeholder={
+									<Text align="center">Loading image</Text>
+								}
+								imageProps={{ crossOrigin: 'anonymous' }}
+							></Image>
+						</div>
+						<div
+							style={{
+								borderRadius: '20px',
+								paddingTop: '10px',
+								marginBottom: '20px',
+							}}
+						>
+							<div
+								style={{ display: 'inline-block', textAlign: 'left' }}
+							>
+								<Text
+									variant="gradient"
+									gradient={{ from: 'orange', to: 'red', deg: 45 }}
+									weight={800}
+									size="xl"
+									style={{
+										marginTop: '-10px',
+										marginBottom: '15px',
+										textAlign: 'center',
+										fontSize: 'max(1.5vw, 1.5em)',
+										whiteSpace: 'nowrap',
+									}}
+								>
+									{parsedRaceList[0]?.raceName}
+									<Text size="xl">
+										{new Date(
+											parsedRaceList[0]?.date +
+												'T' +
+												parsedRaceList[0]?.time
+										).toLocaleString()}
+									</Text>
+								</Text>
+							</div>
+							<div>
+								<Weather
+									date={
+										parsedRaceList[0]?.date +
+										'T' +
+										parsedRaceList[0]?.time
+									}
+									coords={parsedRaceList[0]?.Circuit.Location}
+								/>
+							</div>
+						</div>
+						<SegmentedControl
+							value={value}
+							onChange={setValue}
+							fullWidth
+							radius="xl"
+							size="md"
+							data={[
+								'FP1',
+								'FP2',
+								parsedRaceList[0]?.ThirdPractice ? 'FP3' : 'QUAL',
+								parsedRaceList[0]?.Sprint ? 'SPRINT' : 'QUAL',
+								'GP',
+							]}
+							classNames={classes}
+							style={{ marginBottom: '20px' }}
+						/>
+						{value === 'GP' ? (
+							<>
+								{' '}
+								<Text
+									size="xl"
+									weight={700}
+									color="white"
+								>
+									{eventText[value]}
+								</Text>{' '}
+								<Text
+									color="white"
+									size="sm"
+									weight={900}
+								>
+									<Countdown
+										countdownTimestampMS={new Date(
+											parsedRaceList[0]?.date +
+												'T' +
+												parsedRaceList[0]?.time
+										).getTime()}
+									/>
+								</Text>
+							</>
+						) : (
+							<>
+								{' '}
+								<Text
+									size="xl"
+									weight={700}
+									color="white"
+								>
+									{eventText[value]}
+								</Text>{' '}
+								{new Date(
+									parsedRaceList[0][event[value]]?.date +
+										'T' +
+										parsedRaceList[0][event[value]]?.time
+								).toLocaleString()}
+								<Text
+									color="white"
+									size="sm"
+									weight={800}
+								>
+									<Countdown
+										key={value}
+										countdownTimestampMS={new Date(
+											parsedRaceList[0][event[value]]?.date +
+												'T' +
+												parsedRaceList[0][event[value]]?.time
+										).getTime()}
+									/>
+								</Text>
+							</>
+						)}
 					</div>
 					<div
 						style={{
-							borderRadius: '20px',
-							paddingTop: '10px',
-							marginBottom: '20px',
+							width: '100%',
+							display: 'flex',
+							justifyContent: 'center',
 						}}
 					>
-						<div
-							style={{ display: 'inline-block', textAlign: 'left' }}
-						>
-							<Text
-								variant="gradient"
-								gradient={{ from: 'orange', to: 'red', deg: 45 }}
-								weight={800}
-								size="xl"
-								style={{
-									marginTop: '-10px',
-									marginBottom: '15px',
-									textAlign: 'center',
-									fontSize: 'max(1.5vw, 1.5em)',
-									whiteSpace: 'nowrap',
-								}}
-							>
-								{parsedRaceList[0]?.raceName}
-								<Text size="xl">
-									{new Date(
-										parsedRaceList[0]?.date +
-											'T' +
-											parsedRaceList[0]?.time
-									).toLocaleString()}
-								</Text>
-							</Text>
-						</div>
-						<div>
-							<Weather
-								date={
-									parsedRaceList[0]?.date +
-									'T' +
-									parsedRaceList[0]?.time
-								}
-								coords={parsedRaceList[0]?.Circuit.Location}
-							/>
-						</div>
+						<AddToCalendarButton
+							name={parsedRaceList[0]?.raceName}
+							startDate={parsedRaceList[0]?.date}
+							endDate={parsedRaceList[0]?.date}
+							startTime={parsedRaceList[0]?.time.slice(0, 5)}
+							endTime={moment(
+								parsedRaceList[0]?.time.slice(0, 5),
+								'HH:mm'
+							)
+								.add(90, 'minutes')
+								.format('HH:mm')}
+							options={['Apple', 'Google']}
+							listStyle="modal"
+							lightMode="dark"
+							label="Add race to calendar"
+							hideBackground={true}
+							buttonStyle=""
+						/>
 					</div>
-					<SegmentedControl
-						value={value}
-						onChange={setValue}
-						fullWidth
-						radius="xl"
-						size="md"
-						data={[
-							'FP1',
-							'FP2',
-							parsedRaceList[0]?.ThirdPractice ? 'FP3' : 'QUAL',
-							parsedRaceList[0]?.Sprint ? 'SPRINT' : 'QUAL',
-							'GP',
-						]}
-						classNames={classes}
-						style={{ marginBottom: '20px' }}
-					/>
-					{value === 'GP' ? (
-						<>
-							{' '}
-							<Text
-								size="xl"
-								weight={700}
-								color="white"
-							>
-								{eventText[value]}
-							</Text>{' '}
-							<Text
-								color="white"
-								size="sm"
-								weight={900}
-							>
-								<Countdown
-									countdownTimestampMS={new Date(
-										parsedRaceList[0]?.date +
-											'T' +
-											parsedRaceList[0]?.time
-									).getTime()}
-								/>
-							</Text>
-						</>
-					) : (
-						<>
-							{' '}
-							<Text
-								size="xl"
-								weight={700}
-								color="white"
-							>
-								{eventText[value]}
-							</Text>{' '}
-							{new Date(
-								parsedRaceList[0][event[value]]?.date +
-									'T' +
-									parsedRaceList[0][event[value]]?.time
-							).toLocaleString()}
-							<Text
-								color="white"
-								size="sm"
-								weight={800}
-							>
-								<Countdown
-									key={value}
-									countdownTimestampMS={new Date(
-										parsedRaceList[0][event[value]]?.date +
-											'T' +
-											parsedRaceList[0][event[value]]?.time
-									).getTime()}
-								/>
-							</Text>
-						</>
-					)}
-				</div>
-			</Card>
+				</Card>
+			</>
 		);
 	} else {
 		return <>DOG</>;
