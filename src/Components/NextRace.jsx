@@ -250,6 +250,11 @@ function NextRace() {
 							>
 								{eventText[value]}
 							</Text>{' '}
+							{new Date(
+								parsedRaceList[0][event[value]]?.date +
+									'T' +
+									parsedRaceList[0][event[value]]?.time
+							).toLocaleString()}
 							<Text
 								color="white"
 								size="sm"
@@ -266,77 +271,6 @@ function NextRace() {
 							</Text>
 						</>
 					)}
-					{/* <Spoiler
-            maxHeight={0}
-            showLabel="Show more"
-            hideLabel="Hide"
-            transitionDuration={400}
-          >
-            <Text size="sm" color="white">
-              <Text size="xl" weight={700} color="orange">
-                {" "}
-                Qualifying:
-              </Text>
-              {parsedRaceList[0].Qualifying?.date} <br></br>
-              <Text weight={600}>
-                <Countdown
-                  countdownTimestampMS={new Date(
-                    parsedRaceList[0].Qualifying?.date +
-                      "T" +
-                      parsedRaceList[0].Qualifying?.time
-                  ).getTime()}
-                />
-              </Text>
-            </Text>
-            <Text weight={500} size="xs" color="white">
-              <Text size="md"> First Practice:</Text>
-              {parsedRaceList[0].FirstPractice?.date} <br></br>
-              <Countdown
-                countdownTimestampMS={new Date(
-                  parsedRaceList[0].FirstPractice?.date +
-                    "T" +
-                    parsedRaceList[0].FirstPractice?.time
-                ).getTime()}
-              />
-              <br></br>
-              <Text size="md"> Second Practice:</Text>
-              {parsedRaceList[0].SecondPractice?.date} <br></br>
-              <Countdown
-                countdownTimestampMS={new Date(
-                  parsedRaceList[0].SecondPractice?.date +
-                    "T" +
-                    parsedRaceList[0].SecondPractice?.time
-                ).getTime()}
-              />
-              <br></br>
-              {parsedRaceList[0].ThirdPractice ? (
-                <Text size="md"> Third Practice:</Text>
-              ) : (
-                <Text size="md"> Sprint Race:</Text>
-              )}
-              {parsedRaceList[0].ThirdPractice
-                ? parsedRaceList[0].ThirdPractice?.date
-                : parsedRaceList[0].Sprint.date}
-              <br></br>
-              {parsedRaceList[0].ThirdPractice ? (
-                <Countdown
-                  countdownTimestampMS={new Date(
-                    parsedRaceList[0].ThirdPractice?.date +
-                      "T" +
-                      parsedRaceList[0].ThirdPractice?.time
-                  ).getTime()}
-                />
-              ) : (
-                <Countdown
-                  countdownTimestampMS={new Date(
-                    parsedRaceList[0].Sprint?.date +
-                      "T" +
-                      parsedRaceList[0].Sprint?.time
-                  ).getTime()}
-                />
-              )}
-            </Text>
-          </Spoiler> */}
 				</div>
 			</Card>
 		);
