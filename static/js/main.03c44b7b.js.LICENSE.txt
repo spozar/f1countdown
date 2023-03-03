@@ -1,3 +1,32 @@
+/*!
+ *  @preserve
+ *
+ *  ++++++++++++++++++++++
+ *  Add to Calendar Button
+ *  ++++++++++++++++++++++
+ *
+ *  Version: 2.2.2
+ *  Creator: Jens Kuerschner (https://jenskuerschner.de)
+ *  Project: https://github.com/add2cal/add-to-calendar-button
+ *  License: Elastic License 2.0 (ELv2) (https://github.com/add2cal/add-to-calendar-button/blob/main/LICENSE.txt)
+ *  Note:    DO NOT REMOVE THE COPYRIGHT NOTICE ABOVE!
+ *
+ */
+
+/*!
+ *  @preserve
+ *
+ * ++++++++++++++++++++++++++++++++++++++
+ * Add to Calendar TimeZones iCal Library
+ * ++++++++++++++++++++++++++++++++++++++
+ *
+ * Version: 1.6.1
+ * Creator: Jens Kuerschner (https://jenskuerschner.de)
+ * Project: https://github.com/add2cal/timezones-ical-library
+ * License: Apache-2.0
+ *
+ */
+
 /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
 
 /**
@@ -48,3 +77,5 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
+//! moment.js
