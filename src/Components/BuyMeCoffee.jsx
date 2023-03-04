@@ -47,7 +47,6 @@ function BuyMeCoffee() {
 					padding: '0',
 					backgroundColor: 'white',
 					marginRight: '200px',
-					position: 'fixed',
 				}}
 			>
 				<div style={{ borderRadius: '200px' }}>
