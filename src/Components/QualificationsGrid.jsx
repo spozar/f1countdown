@@ -9,6 +9,8 @@ import {
 const QualificationsGrid = () => {
 	const [qualifyResult, setQualifyResult] = useState();
 
+	const currentDate = new Date().toLocaleDateString();
+
 	useEffect(() => {
 		axios
 			.get('https://ergast.com/api/f1/2023/qualifying.json')
@@ -52,7 +54,7 @@ const QualificationsGrid = () => {
 						flexDirection: 'column',
 					}}
 				>
-					{qualifyResult.date > Date().now() ? (
+					{qualifyResult.date > currentDate ? (
 						qualifyResult.QualifyingResults.map((driver, index) => {
 							return (
 								<div
