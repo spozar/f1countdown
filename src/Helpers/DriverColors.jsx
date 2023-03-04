@@ -12,9 +12,9 @@ export const teamColors = {
 };
 
 export const driverColors = {
-	max_verstappen: '#0600EF',
+	max_verstappen: '#0033cc',
 	leclerc: 'red',
-	perez: '#0600EF',
+	perez: '#0033cc',
 	russell: '#00D2BE',
 	sainz: 'red',
 	alonso: '#006F62',

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Card, Text } from '@mantine/core';
-import { driverColors } from '../Helpers/DriverColors';
+import {
+	driverColors,
+	driverColorsGradient,
+} from '../Helpers/DriverColors';
 
 const QualificationsGrid = () => {
 	const [qualifyResult, setQualifyResult] = useState();
@@ -10,13 +13,8 @@ const QualificationsGrid = () => {
 		axios
 			.get('https://ergast.com/api/f1/2023/qualifying.json')
 			.then((res) => {
-				setQualifyResult(
-					res.data.MRData.RaceTable.Races[0].QualifyingResults
-				);
-				console.log(
-					'Result',
-					res.data.MRData.RaceTable.Races[0].QualifyingResults
-				);
+				setQualifyResult(res.data.MRData.RaceTable.Races[0]);
+				console.log('Result', res.data.MRData.RaceTable.Races[0]);
 			})
 			.catch((error) => console.error(error));
 	}, []);
@@ -40,37 +38,48 @@ const QualificationsGrid = () => {
 			>
 				Starting grid
 			</Text>
-			<div style={{ height: '1rem' }}></div>
-			<div
-				style={{
-					display: 'flex',
-					flexDirection: 'column',
-				}}
+			<Text
+				weight={600}
+				style={{ wordWrap: 'break-word' }}
 			>
-				{qualifyResult.map((driver, index) => {
-					return (
-						<div
-							style={{
-								alignSelf: 'flex-start',
-								paddingLeft: index % 2 === 0 ? '6rem' : '0px',
-							}}
-							key={driver.Driver.driverId}
-						>
-							<Text
-								style={{ lineHeight: '15px' }}
-								variant="gradient"
-								gradient={{
-									from: 'white',
-									to: driverColors[driver.Driver.driverId],
-									deg: 37212,
+				{qualifyResult.Circuit.circuitName}
+			</Text>
+			<div style={{ height: '1rem' }}></div>
+			<div style={{ display: 'inline-block' }}>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+					}}
+				>
+					{qualifyResult.QualifyingResults.map((driver, index) => {
+						return (
+							<div
+								style={{
+									alignSelf: 'flex-start',
+									paddingLeft: index % 2 === 0 ? '6rem' : '0px',
 								}}
-								weight={900}
+								key={driver.Driver.driverId}
 							>
-								{`${index + 1} ${driver.Driver.code}`}
-							</Text>
-						</div>
-					);
-				})}
+								<Text
+									style={{
+										lineHeight: '17px',
+									}}
+									size={'lg'}
+									variant="gradient"
+									gradient={{
+										from: driverColors[driver.Driver.driverId],
+										to: driverColors[driver.Driver.driverId],
+										deg: 180,
+									}}
+									weight={900}
+								>
+									{`${index + 1} ${driver.Driver.code}`}
+								</Text>
+							</div>
+						);
+					})}
+				</div>
 			</div>
 		</Card>
 	);
