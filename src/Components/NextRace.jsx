@@ -48,7 +48,7 @@ function NextRace() {
 	const [raceList, setRaceList] = useState();
 	const [parsedRaceList, setParsedRaceList] = useState();
 	const [value, setValue] = useState('GP');
-	const [year, setYear] = useState(new Date().getFullYear());
+	const year = new Date().getFullYear();
 
 	const lookup = require('country-code-lookup');
 

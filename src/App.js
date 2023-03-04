@@ -11,6 +11,7 @@ import {
 import BuyMeACoffee from './Components/BuyMeACoffee';
 import BuyMeCoffee from './Components/BuyMeCoffee';
 import { useState } from 'react';
+import QualificationsGrid from './Components/QualificationsGrid';
 
 function App() {
 	const [opened, setOpened] = useState(false);
@@ -36,6 +37,16 @@ function App() {
 				</div>
 				<div style={{ display: 'inline-block' }}>
 					<Standings />
+				</div>
+				<div
+					style={{
+						display: 'inline-block',
+						verticalAlign: 'top',
+						margin: '0 2vw',
+						marginBottom: '5vw',
+					}}
+				>
+					<QualificationsGrid />
 				</div>
 				<div style={{ zIndex: '200000' }}>
 					<BuyMeCoffee />
