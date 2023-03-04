@@ -52,33 +52,37 @@ const QualificationsGrid = () => {
 						flexDirection: 'column',
 					}}
 				>
-					{qualifyResult.QualifyingResults.map((driver, index) => {
-						return (
-							<div
-								style={{
-									alignSelf: 'flex-start',
-									paddingLeft: index % 2 === 0 ? '6rem' : '0px',
-								}}
-								key={driver.Driver.driverId}
-							>
-								<Text
+					{qualifyResult.date > Date().now() ? (
+						qualifyResult.QualifyingResults.map((driver, index) => {
+							return (
+								<div
 									style={{
-										lineHeight: '17px',
+										alignSelf: 'flex-start',
+										paddingLeft: index % 2 === 0 ? '6rem' : '0px',
 									}}
-									size={'lg'}
-									variant="gradient"
-									gradient={{
-										from: driverColors[driver.Driver.driverId],
-										to: driverColors[driver.Driver.driverId],
-										deg: 180,
-									}}
-									weight={900}
+									key={driver.Driver.driverId}
 								>
-									{`${index + 1} ${driver.Driver.code}`}
-								</Text>
-							</div>
-						);
-					})}
+									<Text
+										style={{
+											lineHeight: '17px',
+										}}
+										size={'lg'}
+										variant="gradient"
+										gradient={{
+											from: driverColors[driver.Driver.driverId],
+											to: driverColors[driver.Driver.driverId],
+											deg: 180,
+										}}
+										weight={900}
+									>
+										{`${index + 1} ${driver.Driver.code}`}
+									</Text>
+								</div>
+							);
+						})
+					) : (
+						<>The drivers have not yet qualified</>
+					)}
 				</div>
 			</div>
 		</Card>
