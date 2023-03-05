@@ -54,7 +54,7 @@ const QualificationsGrid = () => {
 						flexDirection: 'column',
 					}}
 				>
-					{qualifyResult.date > currentDate ? (
+					{qualifyResult.date >= currentDate ? (
 						qualifyResult.QualifyingResults.map((driver, index) => {
 							return (
 								<div
