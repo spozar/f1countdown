@@ -208,14 +208,20 @@ function NextRace() {
 						/>
 						{value === 'GP' ? (
 							<>
-								{' '}
 								<Text
 									size="xl"
 									weight={700}
 									color="white"
 								>
 									{eventText[value]}
-								</Text>{' '}
+								</Text>
+								<Text style={{ opacity: '0' }}>
+									{new Date(
+										parsedRaceList[0]?.date +
+											'T' +
+											parsedRaceList[0]?.time
+									).toLocaleString()}
+								</Text>
 								<Text
 									color="white"
 									size="sm"
@@ -239,12 +245,14 @@ function NextRace() {
 									color="white"
 								>
 									{eventText[value]}
-								</Text>{' '}
-								{new Date(
-									parsedRaceList[0][event[value]]?.date +
-										'T' +
-										parsedRaceList[0][event[value]]?.time
-								).toLocaleString()}
+								</Text>
+								<Text>
+									{new Date(
+										parsedRaceList[0][event[value]]?.date +
+											'T' +
+											parsedRaceList[0][event[value]]?.time
+									).toLocaleString()}
+								</Text>
 								<Text
 									color="white"
 									size="sm"
