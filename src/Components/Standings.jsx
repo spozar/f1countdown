@@ -244,7 +244,7 @@ function Standings() {
 		return (
 			<Card
 				shadow="md"
-				radius="lg"
+				radius="0"
 				style={{ backgroundColor: '#171717' }}
 			>
 				<Text
@@ -257,7 +257,7 @@ function Standings() {
 					value={value}
 					onChange={setValue}
 					fullWidth
-					radius="xl"
+					radius="0"
 					size="md"
 					data={['Drivers', 'Constructors']}
 					classNames={classes}

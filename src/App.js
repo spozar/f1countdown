@@ -1,20 +1,11 @@
 import './App.css';
 import NextRace from './Components/NextRace';
 import Standings from './Components/Standings';
-import {
-	MantineProvider,
-	Modal,
-	Button,
-	Popover,
-	Text,
-} from '@mantine/core';
-import BuyMeACoffee from './Components/BuyMeACoffee';
+import { MantineProvider } from '@mantine/core';
 import BuyMeCoffee from './Components/BuyMeCoffee';
-import { useState } from 'react';
 import QualificationsGrid from './Components/QualificationsGrid';
 
 function App() {
-	const [opened, setOpened] = useState(false);
 	return (
 		<MantineProvider theme={{ colorScheme: 'dark' }}>
 			<div
@@ -29,7 +20,7 @@ function App() {
 					style={{
 						display: 'inline-block',
 						verticalAlign: 'top',
-						margin: '0 2vw',
+						margin: '0 1vw',
 						marginBottom: '5vw',
 					}}
 				>
@@ -49,7 +40,7 @@ function App() {
 					style={{
 						display: 'inline-block',
 						verticalAlign: 'top',
-						margin: '0 2vw',
+						margin: '0 1vw',
 						marginBottom: '5vw',
 					}}
 				>

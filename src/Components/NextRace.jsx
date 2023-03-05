@@ -126,7 +126,7 @@ function NextRace() {
 			<>
 				<Card
 					shadow="md"
-					radius="lg"
+					radius="0"
 					style={{ backgroundColor: '#171717', overflow: 'visible' }}
 				>
 					<div
@@ -139,7 +139,6 @@ function NextRace() {
 						<div style={{ marginBottom: '2vh' }}>
 							<Image
 								src={`${parsedRaceList[0]?.CountryflagURL}`}
-								radius="lg"
 								withPlaceholder
 								placeholder={
 									<Text align="center">Loading image</Text>
@@ -195,7 +194,7 @@ function NextRace() {
 							value={value}
 							onChange={setValue}
 							fullWidth
-							radius="xl"
+							radius="0"
 							size="md"
 							data={[
 								'FP1',
@@ -286,7 +285,7 @@ function NextRace() {
 							lightMode="dark"
 							label="Add race to calendar"
 							hideBackground={true}
-							buttonStyle=""
+							buttonStyle="text"
 							hideBranding={true}
 						/>
 					</div>

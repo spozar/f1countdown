@@ -21,7 +21,7 @@ const QualificationsGrid = () => {
 	return (
 		<Card
 			shadow="md"
-			radius="lg"
+			radius="0"
 			style={{
 				backgroundColor: '#171717',
 				overflow: 'visible',
