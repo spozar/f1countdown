@@ -8,6 +8,7 @@ import {
 	Image,
 	SegmentedControl,
 	createStyles,
+	Loader,
 } from '@mantine/core';
 import Weather from './Weather';
 import { AddToCalendarButton } from 'add-to-calendar-button-react';
@@ -119,21 +120,6 @@ function NextRace() {
 			setParsedRaceList(remainingRaceList);
 		}
 	}, [raceList, lookup]);
-
-	if (typeof parsedRaceList === 'undefined') {
-		return (
-			<div>
-				<Text
-					color="white"
-					weight={600}
-					size={20}
-				>
-					<Text size={30}>The {year} season has ended!</Text>Website
-					will be back for next season!
-				</Text>
-			</div>
-		);
-	}
 
 	if (parsedRaceList) {
 		return (
@@ -308,7 +294,7 @@ function NextRace() {
 			</>
 		);
 	} else {
-		return <>DOG</>;
+		return <Loader />;
 	}
 }
 

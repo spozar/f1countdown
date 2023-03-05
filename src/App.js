@@ -35,7 +35,14 @@ function App() {
 				>
 					<NextRace />
 				</div>
-				<div style={{ display: 'inline-block' }}>
+				<div
+					style={{
+						display: 'inline-block',
+						verticalAlign: 'top',
+						margin: '0 2vw',
+						marginBottom: '5vw',
+					}}
+				>
 					<Standings />
 				</div>
 				<div
