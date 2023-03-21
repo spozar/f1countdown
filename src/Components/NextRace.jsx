@@ -44,14 +44,10 @@ const useStyles = createStyles((theme) => ({
 	},
 }));
 
-function NextRace() {
+function NextRace({ raceList, parsedRaceList }) {
 	const { classes } = useStyles();
-	const [raceList, setRaceList] = useState();
-	const [parsedRaceList, setParsedRaceList] = useState();
-	const [value, setValue] = useState('GP');
-	const year = new Date().getFullYear();
 
-	const lookup = require('country-code-lookup');
+	const [value, setValue] = useState('GP');
 
 	const event = {
 		FP1: 'FirstPractice',
@@ -70,56 +66,6 @@ function NextRace() {
 		SPRINT: 'Sprint',
 		GP: 'Grand Prix Race',
 	};
-
-	useEffect(() => {
-		const dataAge = localStorage.getItem('Age');
-		if (Date.now() - dataAge > 21600000) {
-			axios
-				.get('https://ergast.com/api/f1/2023.json')
-				.then((res) => {
-					return res.data;
-				})
-				.then((resdata) => {
-					localStorage.setItem(
-						'NextRace',
-						JSON.stringify(resdata.MRData.RaceTable.Races)
-					);
-					localStorage.setItem('Age', Date.now());
-					setRaceList(resdata.MRData.RaceTable.Races);
-				});
-		}
-
-		setRaceList(JSON.parse(localStorage.getItem('NextRace')));
-	}, [lookup]);
-
-	useEffect(() => {
-		let remainingRaceList = [];
-		if (raceList) {
-			let currentDate = new Date().toISOString();
-			raceList.forEach((element) => {
-				if (element.date + 'T' + element?.time > currentDate) {
-					element.Countryflag = lookup.byCountry(
-						element?.Circuit.Location.country
-					);
-					if (
-						element?.Circuit.Location.country.length < 4 &&
-						element?.Circuit.Location.country !== 'UAE'
-					) {
-						element.CountryflagURL =
-							'https://countryflagsapi.com/png/' +
-							element?.Circuit.Location.country;
-					} else if (element?.Circuit.Location.country === 'UAE') {
-						element.CountryflagURL =
-							'https://countryflagsapi.com/png/ARE';
-					} else {
-						element.CountryflagURL = `FlagsSVG/${element?.Countryflag?.iso2.toLowerCase()}.svg`;
-					}
-					remainingRaceList.push(element);
-				}
-			});
-			setParsedRaceList(remainingRaceList);
-		}
-	}, [raceList, lookup]);
 
 	if (parsedRaceList) {
 		return (

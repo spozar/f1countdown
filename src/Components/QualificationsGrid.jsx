@@ -3,20 +3,22 @@ import axios from 'axios';
 import { Card, Loader, Text } from '@mantine/core';
 import { driverColors } from '../Helpers/DriverColors';
 
-const QualificationsGrid = () => {
+const QualificationsGrid = ({ nextRace }) => {
 	const [qualifyResult, setQualifyResult] = useState();
-
-	const currentDate = new Date().toLocaleDateString();
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
+		setLoading(true);
 		axios
-			.get('https://ergast.com/api/f1/2023/qualifying.json')
+			.get(
+				`https://ergast.com/api/f1/2023/${nextRace.round}/qualifying.json`
+			)
 			.then((res) => {
 				setQualifyResult(res.data.MRData.RaceTable.Races[0]);
-				console.log('Result', res.data.MRData.RaceTable.Races[0]);
+				setLoading(false);
 			})
 			.catch((error) => console.error(error));
-	}, []);
+	}, [nextRace.round]);
 
 	return (
 		<Card
@@ -34,7 +36,7 @@ const QualificationsGrid = () => {
 				Starting grid
 			</Text>
 
-			{!qualifyResult ? (
+			{loading ? (
 				<Loader />
 			) : (
 				<>
@@ -42,7 +44,7 @@ const QualificationsGrid = () => {
 						weight={600}
 						style={{ wordWrap: 'break-word' }}
 					>
-						{qualifyResult.Circuit.circuitName}
+						{nextRace.Circuit.circuitName}
 					</Text>
 					<div style={{ height: '1rem' }}></div>
 					<div style={{ display: 'inline-block' }}>
@@ -52,7 +54,7 @@ const QualificationsGrid = () => {
 								flexDirection: 'column',
 							}}
 						>
-							{qualifyResult.date >= currentDate ? (
+							{qualifyResult ? (
 								qualifyResult.QualifyingResults.map(
 									(driver, index) => {
 										return (
