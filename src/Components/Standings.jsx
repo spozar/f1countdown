@@ -187,10 +187,11 @@ function Standings() {
 
 	useEffect(() => {
 		const dataAge = localStorage.getItem('Age_Constructor');
+		const currentYear = new Date().getFullYear();
 		if (Date.now() - dataAge > 0) {
 			axios
 				.get(
-					'https://ergast.com/api/f1/2023/constructorStandings.json'
+					`https://ergast.com/api/f1/${currentYear}/constructorStandings.json`
 				)
 				.then((res) => {
 					localStorage.setItem('Age_Constructor', Date.now());
@@ -212,10 +213,11 @@ function Standings() {
 		);
 	}, []);
 	useEffect(() => {
+		const currentYear = new Date().getFullYear();
 		const dataAge = localStorage.getItem('Age_Driver');
 		if (Date.now() - dataAge > 0) {
 			axios
-				.get('https://ergast.com/api/f1/2023/driverStandings.json')
+				.get(`https://ergast.com/api/f1/${currentYear}/driverStandings.json`)
 				.then((res) => {
 					localStorage.setItem('Age_Driver', Date.now());
 					localStorage.setItem(

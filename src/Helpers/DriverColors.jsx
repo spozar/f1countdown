@@ -29,6 +29,7 @@ export const driverColors = {
 	sargeant: '#005AFF',
 	tsunoda: '#2B4562',
 	de_vries: '#2B4562',
+	ricciardo: '#2B4562',
 	zhou: '#900000',
 	stroll: '#006F62',
 	hamilton: '#00D2BE',

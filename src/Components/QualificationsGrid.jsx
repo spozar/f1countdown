@@ -8,10 +8,11 @@ const QualificationsGrid = ({ nextRace }) => {
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
+		const currentYear = new Date().getFullYear();
 		setLoading(true);
 		axios
 			.get(
-				`https://ergast.com/api/f1/2023/${nextRace.round}/qualifying.json`
+				`https://ergast.com/api/f1/${currentYear}/${nextRace.round}/qualifying.json`
 			)
 			.then((res) => {
 				setQualifyResult(res.data.MRData.RaceTable.Races[0]);
