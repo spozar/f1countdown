@@ -12,7 +12,7 @@ const QualificationsGrid = ({ nextRace }) => {
 		setLoading(true);
 		axios
 			.get(
-				`https://ergast.com/api/f1/${currentYear}/${nextRace.round}/qualifying.json`
+				`https://api.jolpi.ca/ergast/f1/${currentYear}/${nextRace.round}/qualifying`
 			)
 			.then((res) => {
 				setQualifyResult(res.data.MRData.RaceTable.Races[0]);

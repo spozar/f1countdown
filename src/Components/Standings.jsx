@@ -191,7 +191,7 @@ function Standings() {
 		if (Date.now() - dataAge > 0) {
 			axios
 				.get(
-					`https://ergast.com/api/f1/${currentYear}/constructorStandings.json`
+					`https://api.jolpi.ca/ergast/f1/${currentYear}/constructorstandings/`
 				)
 				.then((res) => {
 					localStorage.setItem('Age_Constructor', Date.now());
@@ -217,7 +217,9 @@ function Standings() {
 		const dataAge = localStorage.getItem('Age_Driver');
 		if (Date.now() - dataAge > 0) {
 			axios
-				.get(`https://ergast.com/api/f1/${currentYear}/driverStandings.json`)
+				.get(
+					`https://api.jolpi.ca/ergast/f1/${currentYear}/driverStandings.json`
+				)
 				.then((res) => {
 					localStorage.setItem('Age_Driver', Date.now());
 					localStorage.setItem(
